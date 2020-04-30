@@ -1,0 +1,125 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutForF.cshtml";
+    ViewBag.Title = "Parameters";
+}
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box">
+                <h4 class="header-title">Compte</h4>
+                <p class="sub-header mt-3 mb-3">
+                    Modifier mon profil.
+                </p>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="p-2">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label" for="simpleinput">Nom</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" id="simpleinput" class="form-control" value="Changer mon nom...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label" for="example-email">Adresse électronique</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" id="example-email" name="example-email" class="form-control" placeholder="Changer mon adresse électronique...">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label" for="example-password">Mot de passe</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="example-password" value="password">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Soumettre</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- end row -->
+
+            </div> <!-- end card-box -->
+        </div><!-- end col -->
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card-box">
+                <h4 class="header-title mb-3 mt-5">Se connecter avec d'autres réseaux sociaux:</h4>
+                <div class="button-list">
+                    <button class="btn btn-outline-info waves-effect waves-light">Ajouter un compte Facebook</button>
+                    <button class="btn btn-outline-info waves-effect waves-light">Ajouter un compte Google</button>
+                    <button class="btn btn-outline-info waves-effect waves-light">Ajouter un compte Twitter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box">
+                <h4 class="header-title mt-5">Notifications</h4>
+
+                <p class="sub-header mt-3 mb-3">
+                    Modifier les notifications.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="table table-borderless table-centered mb-0">
+                        <thead class="bg-light border-0">
+                            <tr>
+                                <th style="width:30%;">Activités</th>
+                                <th></th>
+                                <th>E-mail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nouveau post par un utilisateur suivi</td>
+                                <td></td>
+                                <td>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>Contenu suggéré</td>
+                                <td></td>
+                                <td>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td>Nouvelles fonctionnalités</td>
+                                <td></td>
+                                <td>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div> <!-- end table-responsive -->
+            </div> <!-- end card-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end row-->
+</div>
+

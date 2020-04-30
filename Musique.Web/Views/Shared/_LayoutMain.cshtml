@@ -1,0 +1,72 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LA MUSIQUE | @ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Pour tout" name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    @Styles.Render("~/bundles/style/css")
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/pe-icon-7-stroke/css")
+    @Styles.Render("~/bundles/materialdesignicons/css")
+    @Styles.Render("~/bundles/icons/css")
+    @Styles.Render("~/bundles/sweetalert2/css")
+
+
+
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+
+    <!-- Add local styles, mostly for plugins css file -->
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+</head>
+<body>
+    <header class="sticky">
+
+        @Html.Partial("_NavigationMain")
+
+    </header>
+
+    <section class="page-header-box bg-primary">
+        @Html.Partial("_Title")
+    </section>
+
+    <section class="section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8">
+                    @RenderBody()
+                </div>
+                <div class="col-lg-4">
+                    @Html.Partial("_SideBar")
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark footer text-white">
+        @Html.Partial("_Footer")
+    </footer>
+
+    <!-- javascript -->
+    @Scripts.Render("~/bundles/jquery/js")
+    @Scripts.Render("~/bundles/bootstrap/js")
+    @Scripts.Render("~/bundles/bootstrapbundle/js")
+    @Scripts.Render("~/bundles/jqueryeasing/js")
+    @Scripts.Render("~/bundles/app/js")
+    @Scripts.Render("~/bundles/sweetalert2/js")
+    @Scripts.Render("~/bundles/sweet-alerts/js")
+    @Scripts.Render("~/bundles/unobtrusive/js")
+
+
+    <!-- Handler for local scripts -->
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

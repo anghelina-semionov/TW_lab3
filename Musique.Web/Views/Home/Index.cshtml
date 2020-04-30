@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home";
+}
+<section class="bg-home bg-primary" id="home">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="home-content text-center mb-4">
+                    <h1 class="home-title mb-4 text-white">LA MUSIQUE</h1>
+                    <p class="text-white-50 home-desc mb-4">Découvrez, diffusez et partagez un mix toujours plus vaste proposé par des musiciens émergents comme des artistes célèbres venus du monde entier.</p>
+                    <div>
+                        <a href="@Url.Action("Register","Home")" class="btn btn-light mr-1 mb-4">Inscrivez - vous maintenant!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="home-img">
+                    <img src="images/home.png" width="200" height="100" alt="" class="img-fluid mx-auto d-block">
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container-fluid -->
+</section>
+
+<section class="section" id="services">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="title text-center my-4">
+                    <h3 class="mb-3">Écoutez non-stop</h3>
+                    <p class="text-muted">LA MUSIQUE est disponible sur le Web, iOS et Android.</p>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+        <div class="row">
+            <div class="col-lg-2w col-sm-7">
+                <div class="services-box text-center mt-3 p-3">
+                    <div class="services-icon mb-3">
+                        <i class="pe-7s-display1 h2 mt-0"></i>
+                    </div>
+                    <h4>Web</h4>
+                    <p class="text-muted">Écoutez à la maison.</p>
+                </div>
+            </div>
+            <div class="col-lg-2 col-sm-3">
+                <div class="services-box text-center mt-3 p-3">
+                    <div class="services-icon mb-3">
+                        <i class="pe-7s-phone h2 mt-0"></i>
+                    </div>
+                    <h4>ISO/Android</h4>
+                    <p class="text-muted">Écoutez votre musique préférée partout.</p>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container-fluid -->
+</section>

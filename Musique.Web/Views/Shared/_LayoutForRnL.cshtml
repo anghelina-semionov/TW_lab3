@@ -1,0 +1,40 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>LA MUSIQUE | @ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App css -->
+    @Styles.Render("~/bundles/bootstrap/css")
+    @Styles.Render("~/bundles/icons/css")
+    @Styles.Render("~/bundles/app/css")
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/images/favicon.ico">
+
+    <!-- Add local styles, mostly for plugins css file -->
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+</head>
+<body>
+
+    @RenderBody()
+
+    <footer class="footer footer-alt">
+        @Html.Partial("_FooterForRnL")
+    </footer>
+
+    @Scripts.Render("~/bundles/vendor/js")
+    @Scripts.Render("~/bundles/appmin/js")
+
+    <!-- Handler for local scripts -->
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

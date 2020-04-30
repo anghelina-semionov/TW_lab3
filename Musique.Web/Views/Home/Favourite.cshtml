@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutForF.cshtml";
+    ViewBag.Title = "Favourite";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <h4 class="text-muted mb-3"> Écoutez les titres que vous avez aimés : </h4>    
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <label for="inputPassword2" class="sr-only">Search</label>
+                        <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
+                    </div><!-- end col-->
+                </div> <!-- end row -->
+            </div> <!-- end card-box -->
+        </div><!-- end col-->
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div>
+                <div class="popular-post media">
+                    <img src="~/images/ost.jpg" class="img-fluid rounded mr-3" alt="" height="100" width="100">
+                    <div class="media-body">
+                        <h4 class="mt-0 font-14"><a href="#" class="text-dark">Into The Unknown</a></h4>
+                        <span class="text-muted">Simon Chylinski</span>
+                        <audio controls>
+                            <source src="~/audio/Subnautica Soundtrack Into The Unknown.mp3" type="audio/mp3">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+            <h3></h3>
+            <div>
+                <div class="popular-post media">
+                    <img src="~/images/far-ost.jpg" class="img-fluid rounded mr-3" alt="" height="100" width="100">
+                    <div class="media-body">
+                        <h4 class="mt-0 font-14"><a href="#" class="text-dark">Colored Engine</a></h4>
+                        <span class="text-muted">Joel Schoch</span>
+                        <audio controls>
+                            <source src="~/audio/joel-schoch-colored-edgine.mp3" type="audio/mp3">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
+</div>
+
+
+
+
+

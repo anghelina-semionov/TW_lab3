@@ -1,0 +1,96 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutForF.cshtml";
+    ViewBag.Title = "Profile";
+}
+
+<div class="wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-xl-4">
+                <div class="card-box text-center">
+                    
+                    <img src="~/images/user-img.jpg" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image" height="150" width="150">
+                    <h4 class="mb-4 mt-4">Nom d'utilisateur</h4>
+                    <button type="button" class="btn btn-danger btn-xs waves-effect mt-2 mb-2 waves-light">Éditer</button>
+
+                    <div class="text-left mt-5"></div>
+                </div> <!-- end card-box -->
+                <!-- end card-box-->
+            </div> <!-- end col-->
+
+            <div class="col-lg-8 col-xl-8">
+                <div class="card-box">
+                    <ul class="nav nav-pills navtab-bg">
+                        <li class="nav-item">
+                            <a href="#tout" data-toggle="tab" aria-expanded="true" class="nav-link active ml-0">
+                                Tout
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#favorite" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                Favoris
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#following" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                Abonnements
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+
+                        <div class="tab-pane show active" id="tout">
+
+                            <p class="text-muted mt-2">Il n'y a pas encore des titres.</p>
+
+                        </div>
+                        <!-- end timeline content-->
+
+                        <div class="tab-pane" id="favorite">
+
+                            <div class="row">
+                                <div class="col-lg-6 mt-4">
+                                    <div>
+                                        <div class="popular-post media">
+                                            <img src="~/images/ost.jpg" class="img-fluid rounded mr-3" alt="" height="100" width="100">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 font-14"><a href="#" class="text-dark">Into The Unknown</a></h5>
+                                                <span class="text-muted">Simon Chylinski</span>
+                                                <audio controls>
+                                                    <source src="~/audio/Subnautica Soundtrack Into The Unknown.mp3" type="audio/mp3">
+                                                </audio>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="popular-post media">
+                                            <img src="~/images/far-ost.jpg" class="img-fluid rounded mr-3" alt="" height="100" width="100">
+                                            <div class="media-body">
+                                                <h5 class="mt-0 font-14"><a href="#" class="text-dark">Colored Engine</a></h5>
+                                                <span class="text-muted">Joel Schoch</span>
+                                                <audio controls>
+                                                    <source src="~/audio/joel-schoch-colored-edgine.mp3" type="audio/mp3">
+                                                </audio>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- end settings content-->
+                        <div class="tab-pane" id="following">
+
+                            <p class="text-muted mt-2">Vous ne suivez pas encore d'artistes.</p>
+
+                        </div>
+                    </div> <!-- end tab-content -->
+                </div> <!-- end card-box-->
+            </div> <!-- end col -->
+        </div>
+        <!-- end row-->
+    </div> <!-- end container -->
+</div>
+

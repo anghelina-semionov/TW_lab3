@@ -1,0 +1,80 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutForF.cshtml";
+    ViewBag.Title = "FAQ";
+}
+
+<section class="section" id="faq">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="title text-center mb-5">
+                    <i class="pe-7s-help1 h1 text-primary mb-3"></i>
+                    <h3 class="font-22 mb-3"> Foire aux questions </h3>
+                    <p class="text-muted">Voici les réponses aux questions les plus fréquemment posées.</p>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+        <div class="row align-items-center">
+            <div class="col-lg-5">
+                <div>
+                    <img src="~/images/faq-img.png" alt="" class="img-fluid mx-auto d-block">
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <ul class="nav nav-pills faq-nav-tabs nav-justified mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item text-sm-left">
+                        <a class="nav-link active" id="pills-general-tab" data-toggle="pill" href="#pills-general" role="tab" aria-controls="pills-general" aria-selected="true">
+                            <div class="clearfix">
+                                <i class="pe-7s-wallet text-purple float-md-right text-md-center h2 m-0"></i>
+                                <h4 class="mr-2 d-none d-sm-inline-block"> Questions générales </h4>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="tab-content faq-tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-general" role="tabpanel" aria-labelledby="pills-general-tab">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="p-4">
+                                    <div class="faq-box mb-4">
+                                        <div class="faq-question-q-box float-left mr-4">Q.</div>
+                                        <div class="overflow-hidden">
+                                            <h5 class="font-16 mt-0">J'ai réussi à créer un compte, mais je n'ai pas reçu la confirmation par e-mail. </h5>
+                                            <p class="text-muted">Les e-mails de confirmation sont généralement envoyés instantanément. Si vous n’avez pas encore reçu le votre, veuillez essayer les solutions suivantes :</p>
+                                            <p class="text-muted">1. Vérifiez votre dossier de courrier indésirable (spam) pour vous assurer que le message ne s’y est pas retrouvé par accident.</p>
+                                            <p class="text-muted">2.  Essayez à nouveau d’envoyer un e-mail de confirmation depuis votre compte.</p>
+                                            <p class="text-muted">3.  Si cela ne fonctionne toujours pas, vérifiez qu’il n’y ait pas de faute de frappe dans votre e-mail.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="faq-box mb-4">
+                                        <div class="faq-question-q-box float-left mr-4">Q.</div>
+                                        <div class="overflow-hidden">
+                                            <h5 class="font-16 mt-0">Un titre n'est plus trouvable</h5>
+                                            <p class="text-muted"> Il existe plusieurs raisons pour lesquelles un titre n'est pas (ou plus) disponible sur LA MUSIQUE (même s'il l'était auparavant). Voici quelques unes de ces raisons:</p>
+                                            <p class="text-muted">1. Il se peut que ce titre ait été supprimé par l'utilisateur lui-même ou bien ait été retiré de la plateforme pour violation de droits d'auteur.</p>
+                                            <p class="text-muted">2. Il se peut que l'utilisateur ne dispose pas des droits nécéssaires afin de distribuer ce contenu dans votre pays.</p>
+                                            <p class="text-muted">3. Il se peut que l'URL (le lien) à laquelle vous tentez d'accéder n'existe tout simplement pas ou contient une erreur.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end row -->
+                    </div>
+
+                    <!-- end tab-pane -->
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+    </div>
+    <!-- end container-fluid -->
+</section>
+
