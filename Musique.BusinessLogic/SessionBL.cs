@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Musique.BusinessLogic
 {
@@ -14,6 +15,16 @@ namespace Musique.BusinessLogic
         public ULoginResp UserLogin(ULoginData data)
         {
             return UserLoginAction(data);
+        }
+
+        public HttpCookie GenCookie(string loginCredential)
+        {
+            return Cookie(loginCredential);
+        }
+
+        public UserMinimal GetUserByCookie(string apiCookieValue)
+        {
+            return UserCookie(apiCookieValue);
         }
     }
 }

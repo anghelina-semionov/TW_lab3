@@ -1,9 +1,7 @@
 ﻿using Musique.Web.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Musique.Web.Controllers
 {
@@ -13,60 +11,57 @@ namespace Musique.Web.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Stream()
         {
+
             return View();
         }
 
+        [Authorize]
         public ActionResult Library()
         {
             UserData u = new UserData();
-            u.Username = "Utilisateur";
-            u.Tracks = new List<string> { "Track #1", "Track #2" };
+            u.Username = "User";
+            u.LibraryTracks = new List<Tracks>
+            {
+                new Tracks() { TrackTitle = "Into The Unknown", ArtistName = "Simon Chylinski", CoverImage = "/images/ost.jpg", FilePath = "/audio/Subnautica Soundtrack Into The Unknown.mp3" },
+                new Tracks() { TrackTitle = "Colored Engine", ArtistName = "Joel Schoch", CoverImage = "/images/far-ost.jpg", FilePath = "/audio/joel-schoch-colored-edgine.mp3" }
+            };
 
             return View(u);
-            //return View();
+
         }
-        public ActionResult Titre()
+        public ActionResult DeleteTrack(string btn, UserData u)
         {
-            var track = Request.QueryString["p"];
-
-            UserData u = new UserData();
-            u.Username = "Utilisateur";
-            u.SingleTrack = track;
-
-            return View(u);
+            var single = u.LibraryTracks.Find(id => id.TrackTitle == btn);
+            u.LibraryTracks.Remove(single);
+            return View("Library", u);
         }
-
+        public ActionResult LikeTrack(Tracks track)
+        {
+            //u.FavouriteTracks.Add(
+            //    new Tracks() { TrackTitle = "Colored Engine", ArtistName = "Joel Schoch", CoverImage = "/images/far-ost.jpg", FilePath = "/audio/joel-schoch-colored-edgine.mp3" }
+            //
+            //track);
+            UserData u = new UserData();
+            u.Username = "User";
+            u.FavouriteTracks.Add(track);
+            return View("Favourite", u);
+        }
 
         //http://localhost:31843/Home/Product?p=JORA
-        [HttpPost]
+        // [HttpPost]
         //public ActionResult Titre(string btn)
         //{
         //    return Json(new { RedirectUrl = Url.Action("Titre", new { p = btn }) });
         //}
-        public ActionResult Titre(string btn)
-        {
-            return RedirectToAction("Titre", "Home", new { @p = btn });
-        }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        public ActionResult Register()
-        {
-            return View();
-        }
-        public ActionResult Recoverpw()
-        {
-            return View();
-        }
         public ActionResult LogOut()
         {
+            FormsAuthentication.SignOut();
+
             return View();
+
         }
         public ActionResult Contact()
         {
@@ -80,17 +75,54 @@ namespace Musique.Web.Controllers
         {
             return View();
         }
-        public new ActionResult Profile()
-        {
-            return View();
-        }
         public ActionResult Favourite()
         {
-            return View();
+            UserData u = new UserData();
+            u.Username = "User";
+            u.FavouriteTracks = new List<Tracks>
+            {
+                new Tracks() { TrackTitle = "Into The Unknown", ArtistName = "Simon Chylinski", CoverImage = "/images/ost.jpg", FilePath = "/audio/Subnautica Soundtrack Into The Unknown.mp3" },
+            };
+
+            return View(u);
+        }
+        public ActionResult UnlikeTrack(Tracks track)
+        {
+            UserData u = new UserData();
+            u.Username = "User";
+            var single = u.LibraryTracks.Find(id => id == track);
+            u.FavouriteTracks.Remove(single);
+            return View("Favourite", u);
         }
         public ActionResult Following()
         {
-            return View();
+            UserData u = new UserData();
+            u.Username = "User";
+            u.FollowArtist = new List<Artists>
+            {
+                new Artists() { ArtistName = "Simon Chylinski", ArtistId = 1, ArtistImage = "/images/Simon Chylinski.jpg"}
+            };
+
+            return View(u);
+        }
+        public ActionResult UnFollow(Artists artist)
+        {
+            UserData u = new UserData();
+            u.Username = "User";
+            var single = u.FollowArtist.Find(id => id == artist);
+            u.FollowArtist.Remove(single);
+            return View("Following", u);
+        }
+        public ActionResult _SideBar(string btn)
+        {
+            UserData u = new UserData();
+            u.Username = "User";
+            u.FollowArtist = new List<Artists>
+            {
+                new Artists() { ArtistName = "Simon Chylinski", ArtistId = 1, ArtistImage = "/images/Simon Chylinski.jpg"}
+            };
+
+            return View(u);
         }
         public ActionResult Parameters()
         {

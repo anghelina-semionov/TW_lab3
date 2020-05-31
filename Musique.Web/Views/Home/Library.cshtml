@@ -5,8 +5,9 @@
 
 @using System.Web.Optimization
 @model Musique.Web.Models.UserData
+@*@model IEnumerable<Musique.Web.Models.UserData>*@
 
-<div class="row">
+@*<div class="row">
     <div class="col-lg-6">
         <div>
 
@@ -44,7 +45,55 @@
 
         </div>
         </div>
+    </div>*@
+<!-- end row -->
+
+<div class="row">
+    <div class="col-lg-6">
+        <div>
+
+            @using (Ajax.BeginForm("Library", "Home", new AjaxOptions
+            {
+                HttpMethod = "POST",
+                OnSuccess = "success",
+                OnFailure = "fail",
+                UpdateTargetId = "resultTarget"
+            }))
+            {
+                foreach (var track in Model.LibraryTracks)
+                {
+            <div class="popular-post media">
+                <img src="@track.CoverImage" class="img-fluid rounded mr-3" alt="" height="100" width="100">
+
+                <div class="media-body mt-3 mr-3">
+                    <h5 class="mt-0 font-14"><a class="text-dark">@track.TrackTitle</a></h5>
+                    <span class="text-muted">@track.ArtistName</span>
+                    <audio controls>
+                        <source src="@track.FilePath" type="audio/mp3">
+                    </audio>
+                </div>
+                @Html.Hidden("btnDelete", track)
+                <button style="float: right" class="btn btn-primary btn-xs mr-2" name="btn"
+                        type="submit" value="@track.TrackTitle">
+                    @*Вопросик : передать трек и сам объкт UserData*@
+                    Delete
+                </button>
+                @Html.Hidden("btnLike", track)
+                <button style="float: right" class="btn btn-danger btn-xs mr-2" name="btn"
+                        type="submit" value="@track">
+                    Like
+                </button>
+                @Html.Hidden("btnFollow", track)
+                <button style="float: right" class="btn btn-success btn-xs" name="btn"
+                        type="submit" value="@track">
+                    Suivre
+                </button>
+            </div>
+                }
+            }
+        </div>
     </div>
+</div>
 <!-- end row -->
 
 <div class="row">

@@ -1,23 +1,16 @@
-﻿<div class="blog-right-sidebar">
+﻿@model Musique.Web.Models.UserData
 
-
+<div class="blog-right-sidebar">
     <div class="widget widget-categories card mb-4">
         <div class="p-4">
-            <h4 class="widget-title mt-0">Suggestions</h4>
+            <h4 class="widget-title mt-0">Suggestions</h4><!--Список артистов-->
+            <h6 class="mt-0 font-12 text-muted text-right"><a  href="#" onclick="refresh()" class="text-dark">Actualiser</a></h6> <!--Обновить список артистов-->
             <hr>
             <div>
                 <div class="popular-post media">
-                    <img src="~/images/Simon Chylinski.jpg" class="img-fluid rounded mr-3" alt="" height="60" width="70">
+                    <img id="ArtistImage" src="~/images/Simon Chylinski.jpg" class="img-fluid rounded mr-3" alt="" height="70" width="70">
                     <div class="media-body">
-                        <h5 class="mt-0 font-14"><a href="#" class="text-dark">Simon Chylinski</a></h5>
-                        <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Suivre</button>
-                    </div>
-                </div>
-                <hr>
-                <div class="popular-post media">
-                    <img src="~/images/Joel Schoch.jpg" class="img-fluid rounded mr-3" alt="" height="60" width="70">
-                    <div class="media-body">
-                        <h5 class="mt-0 font-14"><a href="#" class="text-dark">Joel Schoch</a></h5>
+                        <h5 class="mt-0 font-14"><a id="AName" class="text-dark">Simon Chylinski</a></h5>
                         <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Suivre</button>
                     </div>
                 </div>
@@ -28,44 +21,87 @@
     <div class="widget widget-popular-post card mb-4">
         <div class="p-4">
             <h4 class="widget-title mt-0">J'aime</h4>
+            <h6 class="mt-0 font-12 text-muted text-right"><a href="@Url.Action("Favourite","Home")" class="text-dark">Tout</a></h6>
             <hr>
             <div class="popular-post media">
-                <img src="~/images/play-button.png" class="img-fluid rounded mr-3" alt="" height="15" width="15">
+                <img id="image" src="~/images/ost.jpg" class="img-fluid rounded mr-3" alt="" height="15" width="15">
                 <div class="media-body">
-                    <h5 class="mt-0 font-14"><a href="#" class="text-dark">Into The Unknown</a></h5>
-                    <span class="text-muted">Simon Chylinski</span>
+                    <h5 class="mt-0 font-14"><a class="text-dark" id="songTitle">Into The Unknown</a></h5>
+                    <span class="text-muted" id="ArtistName">Simon Chylinski</span>
                 </div>
             </div>
-            <div class="popular-post media">
-                <img src="~/images/play-button.png" class="img-fluid rounded mr-3" alt="" height="15" width="15">
-                <div class="media-body">
-                    <h5 class="mt-0 font-14"><a href="#" class="text-dark">Colored Engine</a></h5>
-                    <span class="text-muted">Joel Schoch</span>
+            <div id="player">
+                <div id="buttons">
+                    <button class="btn btn-outline-dark" id="pre" onclick="pre()"><img src="~/images/Pre.png" height="20" width="20" /></button>
+                    <button class="btn btn-outline-dark" id="play" onclick="playOrPauseSong()"><img src="~/images/Play.png" height="20" width="20" /></button>
+                    <button class="btn btn-outline-dark" id="next" onclick="next()"><img src="~/images/Next.png" height="20" width="20" /></button>
                 </div>
-            </div>
-        </div>
-
-    <div class="widget card mb-4">
-        <div class="p-4">
-            <h4 class="widget-title mt-0">Historique d'écoute</h4>
-            <hr>
-            <ul class="list-unstyled mb-0">
-      
-            </ul>
-        </div>
-    </div>
-
-    <div class="widget widget-tag-cloud card mb-4">
-        <div class="p-4">
-            <h4 class="widget-title mt-0"></h4>
-            <h5> Tags</h5>
-            <hr>
-            <div class="tagcloud">
-                <a href="#">Simon Chylinski</a>
-                <a href="#">Joel Schoch</a>
-                <a href="#">Soundtrack</a>
             </div>
         </div>
     </div>
 </div>
 
+<script type="text/javascript">
+
+    var songs = ["/audio/Subnautica Soundtrack Into The Unknown.mp3", "/audio/joel-schoch-colored-edgine.mp3"];
+    var poster = ["/images/ost.jpg", "/images/far-ost.jpg"];
+    var artistPoster = ["/images/Simon Chylinski.jpg", "/images/Joel Schoch.jpg"];
+    var title = ["Into The Unknown", "Colored Engine"];
+    var artist = ["Simon Chylinski", "Joel Schoch"];
+
+    var song = new Audio();
+    var currentSong = 0;    // it point to the current song
+
+    window.onload = playSong;   // it will call the function playSong when window is load
+
+    function playSong() {
+
+        song.src = songs[currentSong];  //set the source of 0th song
+        songTitle.textContent = title[currentSong];
+        ArtistName.textContent = artist[currentSong];
+        song.play();    // play the song
+    }
+
+    function playOrPauseSong() {
+
+        if (song.played) {
+            song.pause();
+        }
+        else {
+            song.play();
+        }
+    }
+
+    function next() {
+
+        currentSong++;
+        if (currentSong > 1) {
+            currentSong = 0;
+        }
+        playSong();
+        image.src = poster[currentSong];
+    }
+
+    function pre() {
+
+        currentSong--;
+        if (currentSong < 0) {
+            currentSong = 0;
+        }
+        playSong();
+        image.src = poster[currentSong];
+    }
+    var i = 0;
+    function refresh() {
+        if (i > 1) {
+            i = 0;
+            AName.textContent = artist[i];
+            ArtistImage.src = artistPoster[i];
+        }
+        else {
+            AName.textContent = artist[i];
+            ArtistImage.src = artistPoster[i];
+        }
+        i++;
+    }
+</script>

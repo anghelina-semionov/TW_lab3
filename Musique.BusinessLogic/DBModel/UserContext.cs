@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace Musique.BusinessLogic.DBModel
 {
-    class UserContext : DbContext
+    public class UserContext : DbContext
     {
         public UserContext() :
-            base("name=eUseControl") // connectionstring name define in your web.config
+            base("name = Musique") // connectionstring name define in your web.config
         {
         }
 
-        public virtual DbSet<UDbTable> Users { get; set; }
+        public virtual DbSet<UDbTable> UDbTables { get; set; }
+        
     }
 }

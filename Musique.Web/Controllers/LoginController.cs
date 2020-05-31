@@ -1,26 +1,19 @@
 ﻿using Musique.BusinessLogic;
 using Musique.BusinessLogic.Interfaces;
-using Musique.Domain.Entities.User;
+using Musique.Domain;
 using Musique.Web.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using UDbTable = Musique.Domain.UDbTable;
 
 namespace Musique.Web.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
-        private readonly ISession _session;
-        public LoginController()
-        {
-            var bl = new BussinesLogic();
-            _session = bl.GetSessionBL();
-        }
 
         // GET: Login
+
         public ActionResult Index()
         {
             return View();
@@ -32,27 +25,22 @@ namespace Musique.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                ULoginData data = new ULoginData
-                {
-                    Credential = login.Credential,
-                    Password = login.Password,
-                    LoginIp = Request.UserHostAddress,
-                    LoginDateTime = DateTime.Now
-                };
 
-                var userLogin = _session.UserLogin(data);
-                if (userLogin.Status)
+                UDbTable data = null;
+                using (DBModels db = new DBModels())
                 {
-                    //ADD COOKIE
+                    data = db.UDbTables.FirstOrDefault(u => u.Email == login.Credential && u.Password == login.Password);
 
-                    return RedirectToAction("Index", "Home");
+                }
+                if (data != null)
+                {
+                    FormsAuthentication.SetAuthCookie(login.Credential, true);
+                    return RedirectToAction("Stream", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", userLogin.StatusMsg);
-                    return View();
+                    ModelState.AddModelError("", "L’adresse e-mail ou le mot de passe que vous avez entré n’est pas valide. Veuillez recommencer.");
                 }
-
             }
 
             return View();

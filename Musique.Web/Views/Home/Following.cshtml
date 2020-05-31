@@ -4,6 +4,8 @@
     ViewBag.Title = "Following";
 }
 
+@model Musique.Web.Models.UserData
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -27,41 +29,29 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card-box">
-                <div class="text-center">
-                    <img src="~/images/Simon Chylinski.jpg" alt="logo" class="avatar-xl rounded-circle mb-3 mt-3" height="200" width="200">
-                    <h4 class="mb-3">Simon Chylinski</h4>
-                </div>
-
-                <div class="text-center">
-                    <a href="" class="btn btn-primary">Suivre</a>
-                </div>
-
+                @using (Ajax.BeginForm("Following", "Home", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "success",
+                    OnFailure = "fail",
+                    UpdateTargetId = "resultTarget"
+                }))
+                {
+                    foreach (var artist in Model.FollowArtist)
+                    {
+                        <div class="text-center">
+                            <img src="@artist.ArtistImage" alt="logo" class="avatar-xl rounded-circle mb-3 mt-3" height="200" width="200">
+                            <h4 class="mb-3">@artist.ArtistName</h4>
+                        </div>
+                        @Html.Hidden("btnUnfollow", artist)
+                        <div class="text-center">
+                            <a value="@artist" class="btn btn-warning">Ne plus suivre</a>
+                        </div>
+                    }
+                }
                 <div id="company-1" class="text-center"></div>
-
             </div>
         </div><!-- end col -->
-
-        <div class="col-md-4">
-            <div class="card-box">
-                <div class="text-center">
-                    <img src="~/images/Joel Schoch.jpg" alt="logo" class="avatar-xl rounded-circle mb-3 mt-3" height="200" width="200">
-                    <h4 class="mb-3">Joel Schoch</h4>
-                </div>
-
-
-
-                <div class="text-center">
-                    <a href="" class="btn btn-primary">Suivre</a>
-                </div>
-
-
-
-                <div id="company-2" class="text-center"></div>
-
-            </div>
-        </div><!-- end col -->
-
-
     </div>
     <!-- end row -->
 </div> <!-- end container -->

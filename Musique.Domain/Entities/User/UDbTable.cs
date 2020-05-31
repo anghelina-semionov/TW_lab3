@@ -12,21 +12,21 @@ namespace Musique.Domain.Entities.User
     public class UDbTable
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Username")]
+        [Display(Name = "Nom complet")]
         [StringLength(30, MinimumLength = 5, ErrorMessage = "Username cannot be longer than 30 characters.")]
         public string Username { get; set; }
 
         [Required]
-        [Display(Name = "Password")]
+        [Display(Name = "Mot de passe")]
         [StringLength(50, MinimumLength = 8, ErrorMessage = "Password cannot be shorter than 8 characters.")]
         public string Password { get; set; }
 
         [Required]
-        [Display(Name = "Email Address")]
+        [Display(Name = "Adresse électronique")]
         [StringLength(30)]
         public string Email { get; set; }
 
@@ -35,7 +35,6 @@ namespace Musique.Domain.Entities.User
 
         [StringLength(30)]
         public string LasIp { get; set; }
-
         public URole Level { get; set; }
     }
 }

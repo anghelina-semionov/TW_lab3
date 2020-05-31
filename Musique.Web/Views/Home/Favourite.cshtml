@@ -4,21 +4,26 @@
     ViewBag.Title = "Favourite";
 }
 
+@model Musique.Web.Models.UserData
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="card-box">
                 <div class="row">
                     <div class="col-lg-8">
+                        <!--(rus) Слушайте треки, которые Вам понравились-->
                         <form class="form-inline">
                             <div class="form-group">
-                                <h4 class="text-muted mb-3"> Écoutez les titres que vous avez aimés : </h4>    
+                                <h4 class="text-muted mb-3"> Écoutez les titres que vous avez aimés : </h4>
                             </div>
                         </form>
-                    </div>
+                    </div><!-- end col-->
                     <div class="col-lg-4">
+                        <!--Поиск по "Понравившимся" трекам-->
                         <label for="inputPassword2" class="sr-only">Search</label>
-                        <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
+                        <input type="search" class="form-control mb-2" id="inputPassword2" placeholder="...">
+                        <button type="button" class="btn btn-outline-info">Rechercher</button>
                     </div><!-- end col-->
                 </div> <!-- end row -->
             </div> <!-- end card-box -->
@@ -26,30 +31,36 @@
     </div>
     <div class="row">
         <div class="col-lg-4">
-            <div>
-                <div class="popular-post media">
-                    <img src="~/images/ost.jpg" class="img-fluid rounded mr-3" alt="" height="100" width="100">
-                    <div class="media-body">
-                        <h4 class="mt-0 font-14"><a href="#" class="text-dark">Into The Unknown</a></h4>
-                        <span class="text-muted">Simon Chylinski</span>
-                        <audio controls>
-                            <source src="~/audio/Subnautica Soundtrack Into The Unknown.mp3" type="audio/mp3">
-                        </audio>
-                    </div>
-                </div>
-            </div>
-            <h3></h3>
-            <div>
-                <div class="popular-post media">
-                    <img src="~/images/far-ost.jpg" class="img-fluid rounded mr-3" alt="" height="100" width="100">
-                    <div class="media-body">
-                        <h4 class="mt-0 font-14"><a href="#" class="text-dark">Colored Engine</a></h4>
-                        <span class="text-muted">Joel Schoch</span>
-                        <audio controls>
-                            <source src="~/audio/joel-schoch-colored-edgine.mp3" type="audio/mp3">
-                        </audio>
-                    </div>
-                </div>
+            <div> <!--Вывод на страницу "Понравившихся" треков из FavouriteTracks-->
+                @using (Ajax.BeginForm("Favourite", "Home", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnSuccess = "success",
+                    OnFailure = "fail",
+                    UpdateTargetId = "resultTarget"
+                }))
+                {
+                    foreach (var track in Model.FavouriteTracks)
+                    {
+                        <div class="popular-post media">
+                            <img src="@track.CoverImage" class="img-fluid rounded mr-3" alt="" height="100" width="100">
+
+                            <div class="media-body mt-3 mr-3">
+                                <h5 class="mt-0 font-14"><a class="text-dark">@track.TrackTitle</a></h5>
+                                <span class="text-muted">@track.ArtistName</span>
+                                <audio controls>
+                                    <source src="@track.FilePath" type="audio/mp3">
+                                </audio>
+                            </div>
+                            @Html.Hidden("btnDelete", track)
+                            <button style="float: right" class="btn btn-primary btn-xs mr-2" name="btn"
+                                    type="submit" value="@track">
+                                @*Вопросик : передать трек и сам объкт UserData*@
+                                Unlike
+                            </button>
+                        </div>
+                    }
+                }
             </div>
         </div>
         <div class="col-lg-4">

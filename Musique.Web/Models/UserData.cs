@@ -8,7 +8,8 @@ namespace Musique.Web.Models
     public class UserData
     {
         public string Username { get; set; }
-        public List<string> Tracks { get; set; }
-        public string SingleTrack { get; set; }
+        public List<Tracks> LibraryTracks { get; set; }
+        public List<Tracks> FavouriteTracks { get; set; }
+        public List<Artists> FollowArtist { get; set; }
     }
 }
